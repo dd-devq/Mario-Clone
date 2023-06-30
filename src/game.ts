@@ -1,7 +1,4 @@
-class Game {
-    constructor() {
-        console.log('Game created')
-    }
-}
+import Phaser from 'phaser'
+import { gameConfig } from './Config'
 
-new Game()
+new Phaser.Game(gameConfig)
