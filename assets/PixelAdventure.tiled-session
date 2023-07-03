@@ -1,0 +1,42 @@
+{
+    "activeFile": "level/Level1.tmx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "fileStates": {
+        "": {
+            "scaleInDock": 1
+        },
+        "Terrain.tsx": {
+            "scaleInDock": 3,
+            "scaleInEditor": 1
+        },
+        "level/Level1.tmx": {
+            "scale": 0.7018125,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 800.0712441000979,
+                "y": 240.09261733012738
+            }
+        },
+        "level/Level1.tmx#Terrain": {
+            "scaleInEditor": 1
+        },
+        "level/Terrain.tsx": {
+            "scaleInDock": 1
+        }
+    },
+    "last.exportedFilePath": "E:/Project/Sun/Mario-Clone/assets/level",
+    "last.imagePath": "E:/Project/Sun/Mario-Clone/assets/sprites/Terrain",
+    "map.lastUsedExportFilter": "All Files (*)",
+    "openFiles": [
+        "level/Level1.tmx",
+        "Terrain.tsx"
+    ],
+    "project": "PixelAdventure.tiled-project",
+    "recentFiles": [
+        "level/Level1.tmx",
+        "Terrain.tsx"
+    ],
+    "tileset.lastUsedFormat": "tsx"
+}

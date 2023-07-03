@@ -41,7 +41,7 @@ export class LoadingScene extends Phaser.Scene {
         console.log('Hello1')
         const map = this.make.tilemap({ key: 'level1', tileWidth: 16, tileHeight: 16 })
         console.log('Hello2')
-        const tileSet = map.addTilesetImage('Terrain', spriteObj.BASE_TERRAIN.key)
+        const tileSet = map.addTilesetImage('Terrain', 'base-terrain')
         if (tileSet !== null) {
             console.log('Hello3')
             const layer = map.createLayer('Ground', tileSet, 0, 0)?.setOrigin(0)
