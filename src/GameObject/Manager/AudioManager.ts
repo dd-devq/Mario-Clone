@@ -15,7 +15,7 @@ export class AudioManager {
 
     public playBGM() {}
 
-    public stopBGM(scene: Phaser.Sce) {}
+    public stopBGM(scene: Phaser.Scene) {}
 
     public mute() {}
 
