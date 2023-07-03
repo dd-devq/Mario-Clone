@@ -11,14 +11,93 @@ export const audioObj = {
     WIN: { key: 'win', path: 'assets\\audio\\win.mp3' },
 }
 
-export const spriteObj = {
-    MARIO_SPRITESHEET: { key: 'mario', path: 'assets\\sprites\\Characters\\Enemies.png' },
-    ENEMIES_SPRITESHEET: { key: 'enemies', path: 'assets\\sprites\\Characters\\Mario.png' },
-    CASTLE: { key: 'castle', path: 'assets\\sprites\\Tilesets\\Castle.png' },
-    BASE_TILES: { key: 'base-tiles', path: 'assets\\sprites\\Tilesets\\OverWorld.png' },
-    ITEMS: { key: 'items', path: 'assets\\sprites\\Misc\\Items.png' },
+export const virtualGuySpriteObj = {
+    JUMP: {
+        key: 'virtual-guy-jump',
+        path: 'assets\\sprites\\Main Characters\\Virtual Guy\\Jump.png',
+    },
+    FALL: {
+        key: 'virtual-guy-fall',
+        path: 'assets\\sprites\\Main Characters\\Virtual Guy\\Fall.png',
+    },
+    HIT: { key: 'virtual-guy-hit', path: 'assets\\sprites\\Main Characters\\Virtual Guy\\Hit.png' },
+    IDLE: {
+        key: 'virtual-guy-idle',
+        path: 'assets\\sprites\\Main Characters\\Virtual Guy\\Idle.png',
+    },
+    RUN: { key: 'virtual-guy-run', path: 'assets\\sprites\\Main Characters\\Virtual Guy\\Run.png' },
+    WALL_JUMP: {
+        key: 'virtual-guy-wall-jump',
+        path: 'assets\\sprites\\Main Characters\\Virtual Guy\\Wall Jump.png',
+    },
+    DOUBLE_JUMP: {
+        key: 'virtual-guy-double-jump',
+        path: 'assets\\sprites\\Main Characters\\Virtual Guy\\Double Jump.png',
+    },
 }
 
-export const fontObj = {
-    HIGHWAY_GOTHIC: { key: 'highway-gothic', path: 'assets\\font\\highway_gothic\\HWYGCOND.TTF' },
+export const pinkManSpriteObj = {
+    JUMP: { key: 'pink-man-jump', path: 'assets\\sprites\\Main Characters\\Pink Man\\Jump.png' },
+    FALL: { key: 'pink-man-fall', path: 'assets\\sprites\\Main Characters\\Pink Man\\Fall.png' },
+    HIT: { key: 'pink-man-hit', path: 'assets\\sprites\\Main Characters\\Pink Man\\Hit.png' },
+    IDLE: { key: 'pink-man-idle', path: 'assets\\sprites\\Main Characters\\Pink Man\\Idle.png' },
+    RUN: { key: 'pink-man-run', path: 'assets\\sprites\\Main Characters\\Pink Man\\Run.png' },
+    WALL_JUMP: {
+        key: 'pink-man-wall-jump',
+        path: 'assets\\sprites\\Main Characters\\Pink Man\\Wall Jump.png',
+    },
+    DOUBLE_JUMP: {
+        key: 'pink-man-double-jump',
+        path: 'assets\\sprites\\Main Characters\\Pink Man\\Double Jump.png',
+    },
+}
+
+export const ninjaFrogSpriteObj = {
+    JUMP: {
+        key: 'ninja-frog-jump',
+        path: 'assets\\sprites\\Main Characters\\Ninja Frog\\Jump.png',
+    },
+    FALL: {
+        key: 'ninja-frog-fall',
+        path: 'assets\\sprites\\Main Characters\\Ninja Frog\\Fall.png',
+    },
+    HIT: { key: 'ninja-frog-hit', path: 'assets\\sprites\\Main Characters\\Ninja Frog\\Hit.png' },
+    IDLE: {
+        key: 'ninja-frog-idle',
+        path: 'assets\\sprites\\Main Characters\\Ninja Frog\\Idle.png',
+    },
+    RUN: { key: 'ninja-frog-run', path: 'assets\\sprites\\Main Characters\\Ninja Frog\\Run.png' },
+    WALL_JUMP: {
+        key: 'ninja-frog-wall-jump',
+        path: 'assets\\sprites\\Main Characters\\Ninja Frog\\Wall Jump.png',
+    },
+    DOUBLE_JUMP: {
+        key: 'ninja-frog-double-jump',
+        path: 'assets\\sprites\\Main Characters\\Ninja Frog\\Double Jump.png',
+    },
+}
+
+export const maskDudeSpriteObj = {
+    JUMP: { key: 'mask-dude-jump', path: 'assets\\sprites\\Main Characters\\Mask Dude\\Jump.png' },
+    FALL: { key: 'mask-dude-fall', path: 'assets\\sprites\\Main Characters\\Mask Dude\\Fall.png' },
+    HIT: { key: 'mask-dude-hit', path: 'assets\\sprites\\Main Characters\\Mask Dude\\Hit.png' },
+    IDLE: { key: 'mask-dude-idle', path: 'assets\\sprites\\Main Characters\\Mask Dude\\Idle.png' },
+    RUN: { key: 'mask-dude-run', path: 'assets\\sprites\\Main Characters\\Mask Dude\\Run.png' },
+    WALL_JUMP: {
+        key: 'mask-dude-wall-jump',
+        path: 'assets\\sprites\\Main Characters\\Mask Dude\\Wall Jump.png',
+    },
+    DOUBLE_JUMP: {
+        key: 'mask-dude-double-jump',
+        path: 'assets\\sprites\\Main Characters\\Mask Dude\\Double Jump.png',
+    },
+}
+
+export const spriteObj = {
+    APPEARING: { key: 'appearing', path: 'assets\\sprites\\Main Characters\\Appearing.png' },
+    DISAPPEARING: {
+        key: 'disappearing',
+        path: 'assets\\sprites\\Main Characters\\Desappearing.png',
+    },
+    BASE_TERRAIN: { key: 'base-terrain', path: 'assets\\sprites\\Terrain\\Terrain.png' },
 }
