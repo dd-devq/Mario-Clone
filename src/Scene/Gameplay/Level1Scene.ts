@@ -1,21 +1,23 @@
 import { spriteObj, virtualGuySpriteObj } from '../../Constant/AssetKey'
 import { depthLayer } from '../../Constant/DepthLayer'
-
+import { InputManager } from '../../GameObject/Manager/InputManager'
 export class Level1Scene extends Phaser.Scene {
-    private backgroundScrollSpeed = 0.1
+    private backgroundScrollSpeed = 0.01
     private background: Phaser.GameObjects.TileSprite
 
     private levelMap: Phaser.Tilemaps.Tilemap
     private platform: Phaser.Tilemaps.TilemapLayer | undefined
 
     private player: Phaser.Physics.Arcade.Sprite
-    private controller: Phaser.Types.Input.Keyboard.CursorKeys
 
     preload() {
         this.load.tilemapTiledJSON('level1', 'assets\\level\\Level1.json')
     }
 
     create() {
+        const inputManager = InputManager.Instance
+        inputManager.initialize(this)
+
         this.player = this.physics.add
             .sprite(500, 200, virtualGuySpriteObj.IDLE.key)
             .setBounce(0.1)
@@ -41,6 +43,7 @@ export class Level1Scene extends Phaser.Scene {
                     94, 95, 96, 97, 98, 116, 117, 118, 119, 120, 138, 139, 140,
                 ])
                 this.physics.add.collider(this.player, this.platform)
+                this.physics.world.bounds.width = this.platform.width
             }
         }
 
@@ -48,30 +51,29 @@ export class Level1Scene extends Phaser.Scene {
             .tileSprite(0, 0, 10000, 10000, spriteObj.BASE_BACKGROUND_BROWN.key)
             .setDepth(depthLayer.BACKGROUND)
 
-        if (this.input.keyboard?.createCursorKeys() !== undefined) {
-            this.controller = this.input.keyboard?.createCursorKeys()
-        }
         this.cameras.main.setBounds(0, 0, this.levelMap.widthInPixels, this.levelMap.heightInPixels)
         this.player.setCollideWorldBounds(true)
-        this.cameras.main.setZoom(3)
-        this.cameras.main.startFollow(this.player, false, 1, 1)
+
+        this.cameras.main.setZoom(4)
+        this.cameras.main.startFollow(this.player)
     }
 
     update(time: number, delta: number): void {
         this.background.tilePositionY -= this.backgroundScrollSpeed * delta
         this.player.setVelocityX(0)
-        this.player.setVelocityY(0)
 
-        if (this.controller.up.isDown == true) {
-            this.player.setVelocityY(-250)
-        } else if (this.controller.down.isDown == true) {
-            this.player.setVelocityY(250)
+        if (InputManager.Instance.isUpKeyPressed()) {
+            this.player.setVelocityY(-200)
+        } else if (InputManager.Instance.isDownKeyPressed()) {
+            this.player.setVelocityY(200)
         }
 
-        if (this.controller.left.isDown == true) {
-            this.player.setVelocityX(-250)
-        } else if (this.controller.right.isDown == true) {
-            this.player.setVelocityX(250)
+        if (InputManager.Instance.isLeftKeyPressed()) {
+            this.player.flipX = true
+            this.player.setVelocityX(-100)
+        } else if (InputManager.Instance.isRightKeyPressed()) {
+            this.player.flipX = false
+            this.player.setVelocityX(100)
         }
     }
 }

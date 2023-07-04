@@ -1,9 +1,9 @@
 import { Player } from './Player'
 import { playerAnimationKey } from '../../Constant/AnimationKey'
 
-export class IdleState extends State<Player> {
+export class HitState extends State<Player> {
     public Enter(): void {
-        this.parent.play(playerAnimationKey.IDLE)
+        this.parent.play(playerAnimationKey.HIT)
     }
 
     public Update(): void {

@@ -11,15 +11,19 @@ export class AudioManager {
         return AudioManager.instance
     }
 
-    public playSoundFX(scene: Phaser.Scene, SoundFXKey: string) {}
+    public playSoundFX(scene: Phaser.Scene, SoundFXKey: string) {
+        //
+    }
 
-    public playBGM() {}
+    public playBGM() {
+        //
+    }
 
-    public stopBGM(scene: Phaser.Scene) {}
+    public stopBGM(scene: Phaser.Scene) {
+        //
+    }
 
     public mute() {}
 
     public unmute() {}
 }
-
-AudioManager.Instance
