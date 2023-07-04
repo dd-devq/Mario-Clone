@@ -30,7 +30,7 @@ export class Button extends Phaser.GameObjects.Container {
             this.sprite = this.scene.add
                 .nineslice(x, y, content, undefined, width, height, 10, 10)
                 .setDisplaySize(width, height)
-            // .setDepth(DepthLayer.UI)
+            // .setDepth(depthLayer.UI)
         }
 
         // Create the background rectangle

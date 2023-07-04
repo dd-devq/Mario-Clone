@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Typescript template project",
   "main": "index.js",
-  "homepage": "https://dd-devq.github.io/Mario-Clone/",
+  "homepage": "https://dd-devq.github.io/Pixel-Adventure/",
   "scripts": {
     "dev": "webpack serve --config webpack/webpack.dev.js",
     "build": "rimraf dist && webpack --config webpack/webpack.prod.js",

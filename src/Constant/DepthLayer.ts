@@ -1,8 +1,9 @@
-export const DepthLayer = {
+export const depthLayer = {
     BACKGROUND: 1,
     BACKGROUND_ITEM: 2,
-    OBSTACLE: 3,
-    NPC: 4,
-    UI: 5,
+    PLATFORM: 3,
+    OBSTACLE: 4,
+    NPC: 5,
+    UI: 6,
     PLAYER: 10,
 }

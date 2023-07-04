@@ -100,4 +100,38 @@ export const spriteObj = {
         path: 'assets\\sprites\\Main Characters\\Desappearing.png',
     },
     BASE_TERRAIN: { key: 'base-terrain', path: 'assets\\sprites\\Terrain\\Terrain.png' },
+    BASE_BACKGROUND_BROWN: {
+        key: 'base-background-brown',
+        path: 'assets\\sprites\\Background\\Brown.png',
+    },
+
+    BASE_BACKGROUND_BLUE: {
+        key: 'base-background-blue',
+        path: 'assets\\sprites\\Background\\Blue.png',
+    },
+
+    BASE_BACKGROUND_GRAY: {
+        key: 'base-background-gray',
+        path: 'assets\\sprites\\Background\\Gray.png',
+    },
+
+    BASE_BACKGROUND_GREEN: {
+        key: 'base-background-green',
+        path: 'assets\\sprites\\Background\\Green.png',
+    },
+
+    BASE_BACKGROUND_PINK: {
+        key: 'base-background-pink',
+        path: 'assets\\sprites\\Background\\Pink.png',
+    },
+
+    BASE_BACKGROUND_PURPLE: {
+        key: 'base-background-purple',
+        path: 'assets\\sprites\\Background\\Purple.png',
+    },
+
+    BASE_BACKGROUND_YELLOW: {
+        key: 'base-background-yellow',
+        path: 'assets\\sprites\\Background\\Yellow.png',
+    },
 }
