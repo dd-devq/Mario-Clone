@@ -12,16 +12,21 @@ export class Level1Scene extends Phaser.Scene {
     private player: Player
 
     preload() {
-        this.load.tilemapTiledJSON('level1', 'assets\\level\\Level1.json')
+        this.load.tilemapTiledJSON('level-1', 'assets\\level\\Level1.json')
     }
 
     create() {
         const inputManager = InputManager.Instance
         inputManager.initialize(this)
 
-        this.levelMap = this.make.tilemap({ key: 'level1', tileWidth: 16, tileHeight: 16 })
+        this.createPlayer()
+        this.createMap()
+        this.setupCamera()
+    }
+
+    private createMap(): void {
+        this.levelMap = this.make.tilemap({ key: 'level-1', tileWidth: 16, tileHeight: 16 })
         const tileSet1 = this.levelMap.addTilesetImage('Terrain', spriteObj.BASE_TERRAIN.key)
-        this.player = new Player(this, 500, 200, virtualGuySpriteObj).setDepth(depthLayer.PLAYER)
 
         if (tileSet1 !== null) {
             this.platform = this.levelMap
@@ -41,11 +46,17 @@ export class Level1Scene extends Phaser.Scene {
         this.background = this.add
             .tileSprite(0, 0, 10000, 10000, spriteObj.BASE_BACKGROUND_BROWN.key)
             .setDepth(depthLayer.BACKGROUND)
+    }
 
+    private setupCamera(): void {
         this.cameras.main.setBounds(0, 0, this.levelMap.widthInPixels, this.levelMap.heightInPixels)
-        this.player.setCollideWorldBounds(true)
         this.cameras.main.setZoom(4)
         this.cameras.main.startFollow(this.player)
+    }
+
+    private createPlayer(): void {
+        this.player = new Player(this, 500, 200, virtualGuySpriteObj).setDepth(depthLayer.PLAYER)
+        this.player.setCollideWorldBounds(true)
     }
 
     update(time: number, delta: number): void {
