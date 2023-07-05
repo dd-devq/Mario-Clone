@@ -2,23 +2,30 @@ import { spriteObj, virtualGuySpriteObj } from '../../Constant/AssetKey'
 import { depthLayer } from '../../Constant/DepthLayer'
 import { InputManager } from '../../GameObject/Manager/InputManager'
 import { Player } from '../../GameObject/Player/Player'
+
 export class Level1Scene extends Phaser.Scene {
     private backgroundScrollSpeed = 0.01
     private background: Phaser.GameObjects.TileSprite
 
     private levelMap: Phaser.Tilemaps.Tilemap
     private platform: Phaser.Tilemaps.TilemapLayer | undefined
+    private collectibles: Phaser.Tilemaps.TilemapLayer | undefined
 
     private player: Player
 
     preload() {
         this.load.tilemapTiledJSON('level-1', 'assets\\level\\Level1.json')
+        this.load.scenePlugin({
+            key: 'BannerTextPlugin',
+            url: 'assets/loader-tests/BannerTextPlugin.js',
+            sceneKey: 'banner',
+        })
     }
 
     create() {
         const inputManager = InputManager.Instance
         inputManager.initialize(this)
-
+        this.add.image(75, 215, spriteObj.ITEM_APPLE.key).setDepth(100)
         this.createPlayer()
         this.createMap()
         this.setupCamera()
@@ -27,12 +34,17 @@ export class Level1Scene extends Phaser.Scene {
     private createMap(): void {
         this.levelMap = this.make.tilemap({ key: 'level-1', tileWidth: 16, tileHeight: 16 })
         const tileSet1 = this.levelMap.addTilesetImage('Terrain', spriteObj.BASE_TERRAIN.key)
+        const tileSet2 = this.levelMap.addTilesetImage('Apple', spriteObj.ITEM_APPLE.key)
 
-        if (tileSet1 !== null) {
+        if (tileSet1 !== null && tileSet2 !== null) {
             this.platform = this.levelMap
                 .createLayer('Ground', tileSet1, 0, 0)
                 ?.setOrigin(0)
                 .setDepth(depthLayer.PLATFORM)
+            this.collectibles = this.levelMap
+                .createLayer('Collectibles', tileSet2, 0, 0)
+                ?.setOrigin(0)
+                .setDepth(depthLayer.BACKGROUND_ITEM)
 
             if (this.platform !== undefined) {
                 this.platform.setCollision([

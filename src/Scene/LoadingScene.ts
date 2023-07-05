@@ -1,6 +1,7 @@
 import { spriteObj, virtualGuySpriteObj } from '../Constant/AssetKey'
 import { depthLayer } from '../Constant/DepthLayer'
 import { sceneKey } from '../Constant/SceneKey'
+
 export class LoadingScene extends Phaser.Scene {
     preload() {
         const barWidth = 500
@@ -63,6 +64,11 @@ export class LoadingScene extends Phaser.Scene {
             frameHeight: 32,
         })
         this.load.spritesheet(virtualGuySpriteObj.RUN.key, virtualGuySpriteObj.RUN.path, {
+            frameWidth: 32,
+            frameHeight: 32,
+        })
+
+        this.load.spritesheet(spriteObj.ITEM_APPLE.key, spriteObj.ITEM_APPLE.path, {
             frameWidth: 32,
             frameHeight: 32,
         })

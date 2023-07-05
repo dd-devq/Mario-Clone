@@ -134,4 +134,9 @@ export const spriteObj = {
         key: 'base-background-yellow',
         path: 'assets\\sprites\\Background\\Yellow.png',
     },
+
+    ITEM_APPLE: {
+        key: 'item-apple',
+        path: 'assets\\sprites\\Items\\Fruits\\Apple.png',
+    },
 }
