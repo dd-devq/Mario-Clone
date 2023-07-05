@@ -13,6 +13,9 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
     public playerStateStack: Stack<State<Player>> = new Stack<State<Player>>()
     public playerState: Map<string, State<Player>> = new Map<string, State<Player>>()
 
+    private readonly BODY_SCALE_FACTOR = { x: 0.5, y: 0.5 }
+    private readonly BODY_OFFSET = { x: 7.5, y: 15 }
+
     /* Player's Flag */
     public isGrounded = true
     public isTouchingWall = false
@@ -26,8 +29,13 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
 
         this.playerSpriteObj = playerSpriteObj
         this.create()
+
         this.scene.add.existing(this)
         this.scene.physics.world.enable(this)
+
+        if (this.body !== null) {
+            this.body.setSize(this.width * 0.5, this.height * 0.5).setOffset(7.5, 15)
+        }
     }
 
     private create(): void {

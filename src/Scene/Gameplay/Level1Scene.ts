@@ -19,12 +19,6 @@ export class Level1Scene extends Phaser.Scene {
         const inputManager = InputManager.Instance
         inputManager.initialize(this)
 
-        // if (this.player.body !== null) {
-        //     this.player.body
-        //         .setSize(this.player.width * 0.7, this.player.height * 0.7)
-        //         .setOffset(5, 10)
-        // }
-
         this.levelMap = this.make.tilemap({ key: 'level1', tileWidth: 16, tileHeight: 16 })
         const tileSet1 = this.levelMap.addTilesetImage('Terrain', spriteObj.BASE_TERRAIN.key)
         this.player = new Player(this, 500, 200, virtualGuySpriteObj).setDepth(depthLayer.PLAYER)

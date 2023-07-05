@@ -15,7 +15,6 @@ export class JumpState extends State<Player> {
     }
 
     public Update(): void {
-        console.log(this.parent.body?.velocity.y)
         if (InputManager.Instance.isLeftKeyDown()) {
             this.parent.applyForceX(-this.inAirMoveForce)
             this.parent.flipPlayerLeft()
