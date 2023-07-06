@@ -139,4 +139,9 @@ export const spriteObj = {
         key: 'item-apple',
         path: 'assets\\sprites\\Items\\Fruits\\Apple.png',
     },
+
+    SPIKE: {
+        key: 'spike',
+        path: 'assets\\sprites\\Traps\\Spikes\\Idle.png',
+    },
 }

@@ -55,6 +55,7 @@
   },
   "dependencies": {
     "gh-pages": "^5.0.0",
-    "phaser": "^3.60.0"
+    "phaser": "^3.60.0",
+    "phaser-animated-tiles": "^2.0.2"
   }
 }

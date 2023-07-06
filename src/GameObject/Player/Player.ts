@@ -34,7 +34,7 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
         this.scene.physics.world.enable(this)
 
         if (this.body !== null) {
-            this.body.setSize(this.width * 0.5, this.height * 0.5).setOffset(7.5, 15)
+            this.body.setSize(this.width * 0.5, this.height * 0.8).setOffset(7.5, 5)
         }
     }
 

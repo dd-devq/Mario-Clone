@@ -7,9 +7,9 @@ export class HitState extends State<Player> {
         this.parent.play(playerAnimationKey.HIT)
     }
 
-    public Update(): void {
-        // Reduce HP
-    }
+    public Update(): void {}
+
+    private jump(): void {}
 
     public Exit(): void {
         this.parent.stop()

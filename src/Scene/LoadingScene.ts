@@ -68,10 +68,8 @@ export class LoadingScene extends Phaser.Scene {
             frameHeight: 32,
         })
 
-        this.load.spritesheet(spriteObj.ITEM_APPLE.key, spriteObj.ITEM_APPLE.path, {
-            frameWidth: 32,
-            frameHeight: 32,
-        })
+        this.load.image(spriteObj.ITEM_APPLE.key, spriteObj.ITEM_APPLE.path)
+        this.load.image(spriteObj.SPIKE.key, spriteObj.SPIKE.path)
 
         this.load.image(spriteObj.BASE_TERRAIN.key, spriteObj.BASE_TERRAIN.path)
         this.load.image(spriteObj.BASE_BACKGROUND_BROWN.key, spriteObj.BASE_BACKGROUND_BROWN.path)
