@@ -4,7 +4,7 @@ import { InputManager } from '../Manager/InputManager'
 import { State } from './State'
 
 export class JumpState extends State<Player> {
-    private jumpForce = -225
+    private jumpForce = -250
     private inAirMoveForce = 75
 
     public Enter(): void {
@@ -29,7 +29,7 @@ export class JumpState extends State<Player> {
             this.parent.gotoState(playerAnimationKey.DOUBLE_JUMP)
         }
         if (this.parent.body !== null) {
-            if (this.parent.body.velocity.y > 50) {
+            if (this.parent.body.velocity.y > 0) {
                 this.parent.gotoState(playerAnimationKey.FALL)
             }
         }
@@ -84,8 +84,9 @@ export class WallJumpState extends State<Player> {
     private inAirMoveForce = 10
 
     public Enter(): void {
+        this.parent.body?.velocity.set(0, 0)
         this.worldGravity = this.parent.scene.physics.world.gravity.y
-        this.parent.scene.physics.world.gravity.y = this.worldGravity * 0.1
+        this.parent.scene.physics.world.gravity.y = this.worldGravity * 0.05
         this.parent.jumpCount = 0
         this.parent.play(playerAnimationKey.WALL_JUMP)
     }
