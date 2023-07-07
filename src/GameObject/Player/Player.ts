@@ -8,13 +8,14 @@ import { State } from './State'
 import { Stack } from '../../Container/Stack'
 
 export class Player extends Phaser.Physics.Arcade.Sprite {
+    /* Player Asset */
     private playerSpriteObj: PlayerSpriteObj
 
     public playerStateStack: Stack<State<Player>> = new Stack<State<Player>>()
     public playerState: Map<string, State<Player>> = new Map<string, State<Player>>()
 
-    private readonly BODY_SCALE_FACTOR = { x: 0.5, y: 0.5 }
-    private readonly BODY_OFFSET = { x: 7.5, y: 15 }
+    private readonly BODY_SCALE_FACTOR = { x: 0.5, y: 0.8 }
+    private readonly BODY_OFFSET = { x: 7.5, y: 5 }
 
     /* Player's Flag */
     public isGrounded = true
@@ -23,6 +24,7 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
     public isFacingLeft = false
     public jumpCount = 0
     public maxJumpCount = 2
+    public isDead = false
 
     constructor(scene: Phaser.Scene, x: number, y: number, playerSpriteObj: PlayerSpriteObj) {
         super(scene, x, y, playerSpriteObj.IDLE.key)
@@ -34,7 +36,12 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
         this.scene.physics.world.enable(this)
 
         if (this.body !== null) {
-            this.body.setSize(this.width * 0.5, this.height * 0.8).setOffset(7.5, 5)
+            this.body
+                .setSize(
+                    this.width * this.BODY_SCALE_FACTOR.x,
+                    this.height * this.BODY_SCALE_FACTOR.y
+                )
+                .setOffset(this.BODY_OFFSET.x, this.BODY_OFFSET.y)
         }
     }
 
@@ -166,8 +173,8 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
     }
 
     update() {
-        this.playerStateStack.top()?.Update()
         this.updateFlags()
+        this.playerStateStack.top()?.Update()
     }
 
     public persistenceForce(): void {
@@ -179,7 +186,6 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
     }
 
     private updateFlags(): void {
-        console.log(this.body?.blocked)
         if (this.body?.blocked.down) {
             this.isGrounded = true
         } else {

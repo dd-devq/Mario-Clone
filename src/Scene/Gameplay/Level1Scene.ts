@@ -1,6 +1,8 @@
 import { playerAnimationKey } from '../../Constant/AnimationKey'
-import { spriteObj, virtualGuySpriteObj } from '../../Constant/AssetKey'
+import { audioObj, spriteObj, virtualGuySpriteObj } from '../../Constant/AssetKey'
 import { depthLayer } from '../../Constant/DepthLayer'
+import { AudioManager } from '../../GameObject/Manager/AudioManager'
+import { GameManager } from '../../GameObject/Manager/GameManager'
 import { InputManager } from '../../GameObject/Manager/InputManager'
 import { Player } from '../../GameObject/Player/Player'
 import AnimatedTiles from 'phaser-animated-tiles/dist/AnimatedTiles'
@@ -9,12 +11,12 @@ export class Level1Scene extends Phaser.Scene {
     private backgroundScrollSpeed = 0.01
     private background: Phaser.GameObjects.TileSprite
 
+    /* Tilemap */
     private levelMap: Phaser.Tilemaps.Tilemap
+    /* Tilemap Layers */
     private platform: Phaser.Tilemaps.TilemapLayer | undefined
     private collectibles: Phaser.Tilemaps.TilemapLayer | undefined
     private spike: Phaser.Tilemaps.TilemapLayer | undefined
-
-    private player: Player
 
     preload() {
         this.load.tilemapTiledJSON('level-1', 'assets\\level\\Level1.json')
@@ -22,11 +24,26 @@ export class Level1Scene extends Phaser.Scene {
     }
 
     create() {
-        const inputManager = InputManager.Instance
-        inputManager.initialize(this)
+        this.initManager()
         this.createPlayer()
         this.createMap()
         this.setupCamera()
+
+        AudioManager.Instance.stopAllSoundFX()
+        AudioManager.Instance.playSoundFX(audioObj.INTRO.key)
+        AudioManager.Instance.bgm = this.sound.add(audioObj.THEME.key)
+        AudioManager.Instance.playBGM(0.5, true)
+    }
+
+    private initManager(): void {
+        const inputManager = InputManager.Instance
+        inputManager.initialize(this)
+
+        const audioManager = AudioManager.Instance
+        audioManager.initialize(this)
+
+        const gameManager = GameManager.Instance
+        gameManager.initialize(this)
     }
 
     private createMap(): void {
@@ -90,12 +107,19 @@ export class Level1Scene extends Phaser.Scene {
             ) {
                 this.physics.world.bounds.width = this.platform.width
 
+                /* Platform Collider */
                 this.platform.setCollision([
                     94, 95, 96, 97, 98, 116, 117, 118, 119, 120, 138, 139, 140,
                 ])
+                this.physics.add.collider(
+                    GameManager.Instance.player,
+                    this.platform,
+                    undefined,
+                    undefined,
+                    this
+                )
 
-                this.physics.add.collider(this.player, this.platform, undefined, undefined, this)
-
+                /* Spike Collider */
                 this.spike.forEachTile((tile) => {
                     if (tile.index != -1) {
                         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -128,15 +152,20 @@ export class Level1Scene extends Phaser.Scene {
                                 .rectangle(posX, posY, width, height)
                                 .setOrigin(0)
                             this.physics.add.existing(rectangle, true)
+
                             this.physics.add.collider(
                                 rectangle,
-                                this.player,
+                                GameManager.Instance.player,
                                 () => {
                                     if (
-                                        this.player.playerStateStack.top() !=
-                                        this.player.playerState.get(playerAnimationKey.HIT)
+                                        GameManager.Instance.player.playerStateStack.top() !=
+                                        GameManager.Instance.player.playerState.get(
+                                            playerAnimationKey.HIT
+                                        )
                                     ) {
-                                        this.player.gotoState(playerAnimationKey.HIT)
+                                        GameManager.Instance.player.gotoState(
+                                            playerAnimationKey.HIT
+                                        )
                                     }
                                 },
                                 undefined,
@@ -146,23 +175,30 @@ export class Level1Scene extends Phaser.Scene {
                     }
                 })
 
+                /* Collectibles Collider */
                 this.physics.add.overlap(
-                    this.player,
+                    GameManager.Instance.player,
                     this.collectibles,
                     () => {
-                        if (this.player.body !== null) {
+                        if (GameManager.Instance.player.body !== null) {
                             const playerBounds = new Phaser.Geom.Rectangle(
-                                this.player.body.position.x,
-                                this.player.body.position.y,
-                                this.player.body.width * 0.735,
-                                this.player.body.height * 0.75
+                                GameManager.Instance.player.body.position.x,
+                                GameManager.Instance.player.body.position.y,
+                                GameManager.Instance.player.body.width * 0.735,
+                                GameManager.Instance.player.body.height * 0.75
                             )
                             const overlappingTiles =
                                 this.collectibles?.getTilesWithinShape(playerBounds)
                             if (overlappingTiles !== undefined) {
                                 overlappingTiles.forEach((tile) => {
                                     if (tile !== null && tile.index != -1) {
-                                        tile.setVisible(false)
+                                        if (tile.visible) {
+                                            tile.setVisible(false)
+                                            AudioManager.Instance.playSoundFX(
+                                                audioObj.COIN.key,
+                                                0.25
+                                            )
+                                        }
                                     }
                                 })
                             }
@@ -185,16 +221,18 @@ export class Level1Scene extends Phaser.Scene {
     private setupCamera(): void {
         this.cameras.main.setBounds(0, 0, this.levelMap.widthInPixels, this.levelMap.heightInPixels)
         this.cameras.main.setZoom(4)
-        this.cameras.main.startFollow(this.player)
+        this.cameras.main.startFollow(GameManager.Instance.player)
     }
 
     private createPlayer(): void {
-        this.player = new Player(this, 1400, 100, virtualGuySpriteObj).setDepth(depthLayer.PLAYER)
-        this.player.setCollideWorldBounds(true)
+        GameManager.Instance.player = new Player(this, 1400, 100, virtualGuySpriteObj).setDepth(
+            depthLayer.PLAYER
+        )
+        GameManager.Instance.player.setCollideWorldBounds(true)
     }
 
     update(time: number, delta: number): void {
         this.background.tilePositionY -= this.backgroundScrollSpeed * delta
-        this.player.update()
+        GameManager.Instance.update()
     }
 }

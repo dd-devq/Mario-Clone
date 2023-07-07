@@ -5,6 +5,7 @@ import { State } from './State'
 
 export class FallState extends State<Player> {
     private inAirMoveForce = 75
+    private boostForce = 200
 
     public Enter(): void {
         this.parent.play(playerAnimationKey.FALL)
@@ -25,6 +26,7 @@ export class FallState extends State<Player> {
             this.parent.jumpCount == 1 &&
             (InputManager.Instance.isSpaceKeyDown() || InputManager.Instance.isUpKeyDown())
         ) {
+            this.boost()
             this.parent.gotoState(playerAnimationKey.DOUBLE_JUMP)
         } else if (
             this.parent.jumpCount == 0 &&
@@ -40,6 +42,10 @@ export class FallState extends State<Player> {
         }
 
         // Hit Enemy --> Jump
+    }
+
+    private boost(): void {
+        this.parent.setVelocityY(this.boostForce)
     }
 
     public Exit(): void {

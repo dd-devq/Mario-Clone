@@ -1,4 +1,4 @@
-import { spriteObj, virtualGuySpriteObj } from '../Constant/AssetKey'
+import { audioObj, spriteObj, virtualGuySpriteObj } from '../Constant/AssetKey'
 import { depthLayer } from '../Constant/DepthLayer'
 import { sceneKey } from '../Constant/SceneKey'
 
@@ -77,9 +77,7 @@ export class LoadingScene extends Phaser.Scene {
         this.load.image(spriteObj.ITEM_ORANGE.key, spriteObj.ITEM_ORANGE.path)
         this.load.image(spriteObj.ITEM_PINEAPPLE.key, spriteObj.ITEM_PINEAPPLE.path)
         this.load.image(spriteObj.ITEM_STRAWBERRY.key, spriteObj.ITEM_STRAWBERRY.path)
-
         this.load.image(spriteObj.SPIKE.key, spriteObj.SPIKE.path)
-
         this.load.image(spriteObj.BASE_TERRAIN.key, spriteObj.BASE_TERRAIN.path)
         this.load.image(spriteObj.BASE_BACKGROUND_BROWN.key, spriteObj.BASE_BACKGROUND_BROWN.path)
         this.load.image(spriteObj.BASE_BACKGROUND_BLUE.key, spriteObj.BASE_BACKGROUND_BLUE.path)
@@ -88,5 +86,15 @@ export class LoadingScene extends Phaser.Scene {
         this.load.image(spriteObj.BASE_BACKGROUND_PURPLE.key, spriteObj.BASE_BACKGROUND_PURPLE.path)
         this.load.image(spriteObj.BASE_BACKGROUND_YELLOW.key, spriteObj.BASE_BACKGROUND_YELLOW.path)
         this.load.image(spriteObj.BASE_BACKGROUND_PINK.key, spriteObj.BASE_BACKGROUND_PINK.path)
+
+        this.load.audio(audioObj.COIN.key, audioObj.COIN.path)
+        this.load.audio(audioObj.DEATH.key, audioObj.DEATH.path)
+        this.load.audio(audioObj.GAME_OVER.key, audioObj.GAME_OVER.path)
+        this.load.audio(audioObj.HERE_WE_GO.key, audioObj.HERE_WE_GO.path)
+        this.load.audio(audioObj.INTRO.key, audioObj.INTRO.path)
+        this.load.audio(audioObj.JUMP.key, audioObj.JUMP.path)
+        this.load.audio(audioObj.POWER_UP.key, audioObj.POWER_UP.path)
+        this.load.audio(audioObj.THEME.key, audioObj.THEME.path)
+        this.load.audio(audioObj.WIN.key, audioObj.WIN.path)
     }
 }

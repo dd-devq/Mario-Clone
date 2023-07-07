@@ -16,6 +16,6 @@ export const gameConfig = {
         },
     },
     scene: [LoadingScene],
-
+    backgroundColor: '#000000',
     pixelArt: true,
 }

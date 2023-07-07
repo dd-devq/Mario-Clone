@@ -13,11 +13,10 @@ export class RunState extends State<Player> {
 
     public Update(): void {
         this.parent.persistenceForce()
-
-        if (InputManager.Instance.isLeftKeyDown()) {
+        if (InputManager.Instance.isLeftKeyDown() && this.parent.isGrounded) {
             this.parent.applyForceX(-this.moveForce)
             this.parent.flipPlayerLeft()
-        } else if (InputManager.Instance.isRightKeyDown()) {
+        } else if (InputManager.Instance.isRightKeyDown() && this.parent.isGrounded) {
             this.parent.applyForceX(this.moveForce)
             this.parent.flipPlayerRight()
         } else if (!this.parent.isGrounded) {

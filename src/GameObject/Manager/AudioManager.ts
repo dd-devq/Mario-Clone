@@ -1,7 +1,13 @@
 export class AudioManager {
     private static instance: AudioManager
-    private bgm: Phaser.Sound.BaseSound
     private isMuted = false
+    private scene: Phaser.Scene
+
+    public bgm: Phaser.Sound.BaseSound
+
+    public initialize(scene: Phaser.Scene): void {
+        this.scene = scene
+    }
 
     static get Instance(): AudioManager {
         if (!AudioManager.instance) {
@@ -11,19 +17,61 @@ export class AudioManager {
         return AudioManager.instance
     }
 
-    public playSoundFX(scene: Phaser.Scene, SoundFXKey: string) {
-        //
+    get IsMuted(): boolean {
+        return this.isMuted
     }
 
-    public playBGM() {
-        //
+    set IsMute(isMuted: boolean) {
+        this.isMuted = isMuted
+        if (this.isMuted) {
+            this.stopBGM()
+            this.stopAllSoundFX()
+        }
     }
 
-    public stopBGM(scene: Phaser.Scene) {
-        //
+    public playSoundFX(audioKey: string, volume = 1, isLoop = false): void {
+        if (this.isMuted) {
+            return
+        }
+        this.scene.sound.add(audioKey, { volume: volume, loop: isLoop })
+        this.scene.sound.play(audioKey)
     }
 
-    public mute() {}
+    public stopSoundFX(audioKey: string): void {
+        const audioList = this.scene.sound.getAllPlaying()
+        audioList.forEach((audio) => {
+            if (audio.key === audioKey) {
+                audio.stop()
+            }
+        })
+    }
 
-    public unmute() {}
+    public stopAllSoundFX(): void {
+        const audioList = this.scene.sound.getAllPlaying()
+        audioList.forEach((audio) => {
+            audio.stop()
+        })
+    }
+
+    public playBGM(volume = 1, isLoop = false) {
+        if (this.isMuted) {
+            return
+        }
+        this.bgm.play({ volume: volume, loop: isLoop })
+    }
+
+    public stopBGM() {
+        this.bgm.stop()
+    }
+
+    public resumeBGM() {
+        if (this.isMuted) {
+            return
+        }
+        this.bgm.resume()
+    }
+
+    public pauseBGM() {
+        this.bgm.pause()
+    }
 }

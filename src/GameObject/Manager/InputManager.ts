@@ -4,6 +4,7 @@ export class InputManager {
     private scene: Phaser.Scene
     private keyboard: Phaser.Input.Keyboard.KeyboardPlugin
     private cursor: Phaser.Types.Input.Keyboard.CursorKeys
+
     public static get Instance(): InputManager {
         if (!InputManager.instance) {
             InputManager.instance = new InputManager()
@@ -12,8 +13,9 @@ export class InputManager {
     }
 
     public initialize(scene: Phaser.Scene): void {
-        if (scene.input.keyboard !== null) {
-            this.keyboard = scene.input.keyboard
+        this.scene = scene
+        if (this.scene.input.keyboard !== null) {
+            this.keyboard = this.scene.input.keyboard
             this.cursor = this.keyboard.createCursorKeys()
         }
     }

@@ -2,12 +2,15 @@ import { Player } from './Player'
 import { playerAnimationKey } from '../../Constant/AnimationKey'
 import { InputManager } from '../Manager/InputManager'
 import { State } from './State'
+import { AudioManager } from '../Manager/AudioManager'
+import { audioObj } from '../../Constant/AssetKey'
 
 export class JumpState extends State<Player> {
     private jumpForce = -250
     private inAirMoveForce = 75
 
     public Enter(): void {
+        AudioManager.Instance.playSoundFX(audioObj.JUMP.key)
         this.parent.setVelocityY(0)
         this.parent.play(playerAnimationKey.JUMP)
         ++this.parent.jumpCount
@@ -50,6 +53,7 @@ export class DoubleJumpState extends State<Player> {
     private inAirMoveForce = 50
 
     public Enter(): void {
+        AudioManager.Instance.playSoundFX(audioObj.JUMP.key)
         this.parent.play(playerAnimationKey.DOUBLE_JUMP)
         ++this.parent.jumpCount
         this.jump()
