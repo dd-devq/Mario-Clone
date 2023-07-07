@@ -19,7 +19,7 @@ export class IdleState extends State<Player> {
             this.parent.gotoState(playerAnimationKey.RUN)
         }
 
-        if (InputManager.Instance.isSpaceKeyDown()) {
+        if (InputManager.Instance.isSpaceKeyDown() || InputManager.Instance.isUpKeyDown()) {
             this.parent.gotoState(playerAnimationKey.JUMP)
         }
     }

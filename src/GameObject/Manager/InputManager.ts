@@ -22,6 +22,10 @@ export class InputManager {
         return Phaser.Input.Keyboard.JustDown(this.cursor.space)
     }
 
+    public isUpKeyDown(): boolean {
+        return Phaser.Input.Keyboard.JustDown(this.cursor.up)
+    }
+
     public isLeftKeyDown(): boolean {
         return this.cursor.left.isDown
     }

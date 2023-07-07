@@ -22,9 +22,10 @@ export class JumpState extends State<Player> {
             this.parent.applyForceX(this.inAirMoveForce)
             this.parent.flipPlayerRight()
         }
+
         if (
             this.parent.jumpCount < this.parent.maxJumpCount &&
-            InputManager.Instance.isSpaceKeyDown()
+            (InputManager.Instance.isSpaceKeyDown() || InputManager.Instance.isUpKeyDown())
         ) {
             this.parent.gotoState(playerAnimationKey.DOUBLE_JUMP)
         }
@@ -94,15 +95,7 @@ export class WallJumpState extends State<Player> {
     public Update(): void {
         this.parent.persistenceForce()
 
-        if (!this.parent.isTouchingWall) {
-            this.parent.gotoState(playerAnimationKey.FALL)
-        }
-
-        if (this.parent.isGrounded) {
-            this.parent.gotoState(playerAnimationKey.IDLE)
-        }
-
-        if (InputManager.Instance.isSpaceKeyDown()) {
+        if (InputManager.Instance.isSpaceKeyDown() || InputManager.Instance.isUpKeyDown()) {
             this.parent.gotoState(playerAnimationKey.JUMP)
         }
 
@@ -112,6 +105,14 @@ export class WallJumpState extends State<Player> {
         } else if (InputManager.Instance.isLeftKeyDown() && !this.parent.isTouchingWallLeft) {
             this.parent.applyForceX(-this.inAirMoveForce)
             this.parent.flipPlayerLeft()
+        }
+
+        if (!this.parent.isTouchingWall) {
+            this.parent.gotoState(playerAnimationKey.FALL)
+        }
+
+        if (this.parent.isGrounded) {
+            this.parent.gotoState(playerAnimationKey.IDLE)
         }
     }
 

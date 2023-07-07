@@ -89,7 +89,12 @@ export class Level1Scene extends Phaser.Scene {
                                 rectangle,
                                 this.player,
                                 () => {
-                                    this.player.gotoState(playerAnimationKey.JUMP)
+                                    if (
+                                        this.player.playerStateStack.top() !=
+                                        this.player.playerState.get(playerAnimationKey.HIT)
+                                    ) {
+                                        this.player.gotoState(playerAnimationKey.HIT)
+                                    }
                                 },
                                 undefined,
                                 this
