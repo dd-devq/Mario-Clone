@@ -15,7 +15,10 @@ export class HitState extends State<Player> {
         this.parent.applyForceX(0)
         this.parent.play(playerAnimationKey.HIT)
         this.parent.on(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
-            this.isAnimationComplete = true
+            this.parent.play(playerAnimationKey.DISAPPEARING)
+            this.parent.on(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
+                this.isAnimationComplete = true
+            })
         })
         this.parent.scene.cameras.main.shake(50, 0.00075)
     }

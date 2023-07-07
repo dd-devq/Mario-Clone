@@ -34,13 +34,19 @@ export class LoadingScene extends Phaser.Scene {
         this.load.on('complete', () => {
             progressBar.destroy()
             progressBox.destroy()
-            this.scene.start(sceneKey.LEVEL1)
+            this.scene.start(sceneKey.LEVEL3)
+        })
+
+        this.load.spritesheet(spriteObj.DISAPPEARING.key, spriteObj.DISAPPEARING.path, {
+            frameWidth: 96,
+            frameHeight: 96,
         })
 
         this.load.spritesheet(virtualGuySpriteObj.JUMP.key, virtualGuySpriteObj.JUMP.path, {
             frameWidth: 32,
             frameHeight: 32,
         })
+
         this.load.spritesheet(
             virtualGuySpriteObj.DOUBLE_JUMP.key,
             virtualGuySpriteObj.DOUBLE_JUMP.path,

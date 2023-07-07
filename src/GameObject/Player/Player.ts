@@ -6,6 +6,7 @@ import { HitState } from './HitState'
 import { DoubleJumpState, JumpState, WallJumpState } from './JumpState'
 import { State } from './State'
 import { Stack } from '../../Container/Stack'
+import { spriteObj } from '../../Constant/AssetKey'
 
 export class Player extends Phaser.Physics.Arcade.Sprite {
     /* Player Asset */
@@ -70,6 +71,16 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
             if (this.scene.anims.exists(key)) {
                 this.scene.anims.remove(key)
             }
+        })
+
+        this.anims.create({
+            key: playerAnimationKey.DISAPPEARING,
+            frames: this.anims.generateFrameNumbers(spriteObj.DISAPPEARING.key, {
+                start: 0,
+                end: -1,
+            }),
+            frameRate: 15,
+            repeat: 0,
         })
 
         this.anims.create({

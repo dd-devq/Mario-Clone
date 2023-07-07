@@ -6,4 +6,5 @@ export const playerAnimationKey = {
     RUN: 'run',
     WALL_JUMP: 'wall-jump',
     DOUBLE_JUMP: 'double-jump',
+    DISAPPEARING: 'disappearing',
 }
