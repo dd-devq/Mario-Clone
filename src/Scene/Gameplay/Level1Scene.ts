@@ -32,13 +32,55 @@ export class Level1Scene extends Phaser.Scene {
     private createMap(): void {
         this.levelMap = this.make.tilemap({ key: 'level-1', tileWidth: 16, tileHeight: 16 })
         const tileSet1 = this.levelMap.addTilesetImage('Terrain', spriteObj.BASE_TERRAIN.key)
-        const tileSet2 = this.levelMap.addTilesetImage('Apple', spriteObj.ITEM_APPLE.key)
         const tileSet3 = this.levelMap.addTilesetImage('Spike', spriteObj.SPIKE.key)
-        if (tileSet1 !== null && tileSet2 !== null && tileSet3 !== null) {
+        const tileSetApple = this.levelMap.addTilesetImage('Apple', spriteObj.ITEM_APPLE.key)
+        const tileSetBananas = this.levelMap.addTilesetImage('Bananas', spriteObj.ITEM_BANANAS.key)
+        const tileSetCherries = this.levelMap.addTilesetImage(
+            'Cherries',
+            spriteObj.ITEM_CHERRIES.key
+        )
+        const tileSetKiwi = this.levelMap.addTilesetImage('Kiwi', spriteObj.ITEM_KIWI.key)
+        const tileSetMelon = this.levelMap.addTilesetImage('Melon', spriteObj.ITEM_MELON.key)
+        const tileSetOrange = this.levelMap.addTilesetImage('Orange', spriteObj.ITEM_ORANGE.key)
+        const tileSetPineapple = this.levelMap.addTilesetImage(
+            'Pineapple',
+            spriteObj.ITEM_PINEAPPLE.key
+        )
+        const tileSetStrawberry = this.levelMap.addTilesetImage(
+            'Strawberry',
+            spriteObj.ITEM_STRAWBERRY.key
+        )
+
+        if (
+            tileSet1 !== null &&
+            tileSet3 !== null &&
+            tileSetApple !== null &&
+            tileSetBananas !== null &&
+            tileSetCherries !== null &&
+            tileSetKiwi !== null &&
+            tileSetMelon !== null &&
+            tileSetOrange !== null &&
+            tileSetPineapple !== null &&
+            tileSetStrawberry !== null
+        ) {
             this.platform = this.levelMap.createLayer('Ground', tileSet1, 0, 0)?.setOrigin(0)
             this.spike = this.levelMap.createLayer('Spike', tileSet3, 0, 0)?.setOrigin(0)
             this.collectibles = this.levelMap
-                .createLayer('Collectibles', tileSet2, 0, 0)
+                .createLayer(
+                    'Collectibles',
+                    [
+                        tileSetApple,
+                        tileSetBananas,
+                        tileSetCherries,
+                        tileSetKiwi,
+                        tileSetMelon,
+                        tileSetOrange,
+                        tileSetPineapple,
+                        tileSetStrawberry,
+                    ],
+                    0,
+                    0
+                )
                 ?.setOrigin(0)
 
             if (

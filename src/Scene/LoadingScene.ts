@@ -69,6 +69,15 @@ export class LoadingScene extends Phaser.Scene {
         })
 
         this.load.image(spriteObj.ITEM_APPLE.key, spriteObj.ITEM_APPLE.path)
+        this.load.image(spriteObj.ITEM_BANANAS.key, spriteObj.ITEM_BANANAS.path)
+        this.load.image(spriteObj.ITEM_CHERRIES.key, spriteObj.ITEM_CHERRIES.path)
+        this.load.image(spriteObj.ITEM_KIWI.key, spriteObj.ITEM_KIWI.path)
+        this.load.image(spriteObj.ITEM_MELON.key, spriteObj.ITEM_MELON.path)
+        this.load.image(spriteObj.ITEM_ORANGE.key, spriteObj.ITEM_ORANGE.path)
+        this.load.image(spriteObj.ITEM_ORANGE.key, spriteObj.ITEM_ORANGE.path)
+        this.load.image(spriteObj.ITEM_PINEAPPLE.key, spriteObj.ITEM_PINEAPPLE.path)
+        this.load.image(spriteObj.ITEM_STRAWBERRY.key, spriteObj.ITEM_STRAWBERRY.path)
+
         this.load.image(spriteObj.SPIKE.key, spriteObj.SPIKE.path)
 
         this.load.image(spriteObj.BASE_TERRAIN.key, spriteObj.BASE_TERRAIN.path)

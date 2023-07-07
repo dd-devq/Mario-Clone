@@ -140,6 +140,41 @@ export const spriteObj = {
         path: 'assets\\sprites\\Items\\Fruits\\Apple.png',
     },
 
+    ITEM_BANANAS: {
+        key: 'item-bananas',
+        path: 'assets\\sprites\\Items\\Fruits\\Bananas.png',
+    },
+
+    ITEM_CHERRIES: {
+        key: 'item-cherries',
+        path: 'assets\\sprites\\Items\\Fruits\\Cherries.png',
+    },
+
+    ITEM_KIWI: {
+        key: 'item-kiwi',
+        path: 'assets\\sprites\\Items\\Fruits\\Kiwi.png',
+    },
+
+    ITEM_MELON: {
+        key: 'item-melon',
+        path: 'assets\\sprites\\Items\\Fruits\\Melon.png',
+    },
+
+    ITEM_ORANGE: {
+        key: 'item-orange',
+        path: 'assets\\sprites\\Items\\Fruits\\Orange.png',
+    },
+
+    ITEM_PINEAPPLE: {
+        key: 'item-pineapple',
+        path: 'assets\\sprites\\Items\\Fruits\\Pineapple.png',
+    },
+
+    ITEM_STRAWBERRY: {
+        key: 'item-strawberry',
+        path: 'assets\\sprites\\Items\\Fruits\\Strawberry.png',
+    },
+
     SPIKE: {
         key: 'spike',
         path: 'assets\\sprites\\Traps\\Spikes\\Idle.png',
