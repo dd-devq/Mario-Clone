@@ -179,6 +179,7 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
     }
 
     private updateFlags(): void {
+        console.log(this.body?.blocked)
         if (this.body?.blocked.down) {
             this.isGrounded = true
         } else {

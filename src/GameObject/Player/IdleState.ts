@@ -11,6 +11,7 @@ export class IdleState extends State<Player> {
 
     public Update(): void {
         this.parent.persistenceForce()
+
         if (InputManager.Instance.isLeftKeyDown()) {
             this.parent.flipPlayerLeft()
             this.parent.gotoState(playerAnimationKey.RUN)

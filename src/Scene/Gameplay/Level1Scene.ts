@@ -51,6 +51,7 @@ export class Level1Scene extends Phaser.Scene {
                 this.platform.setCollision([
                     94, 95, 96, 97, 98, 116, 117, 118, 119, 120, 138, 139, 140,
                 ])
+
                 this.physics.add.collider(this.player, this.platform, undefined, undefined, this)
 
                 this.spike.forEachTile((tile) => {
