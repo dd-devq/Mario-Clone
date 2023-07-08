@@ -19,7 +19,7 @@ export class Level2Scene extends Phaser.Scene {
     private spike: Phaser.Tilemaps.TilemapLayer | undefined
 
     preload() {
-        this.load.tilemapTiledJSON('level-1', 'assets\\level\\Level1.json')
+        this.load.tilemapTiledJSON('level-2', 'assets\\level\\Level2.json')
         this.load.scenePlugin('animatedTiles', AnimatedTiles, 'animatedTiles', 'animatedTiles')
     }
 
@@ -47,7 +47,7 @@ export class Level2Scene extends Phaser.Scene {
     }
 
     private createMap(): void {
-        this.levelMap = this.make.tilemap({ key: 'level-1', tileWidth: 16, tileHeight: 16 })
+        this.levelMap = this.make.tilemap({ key: 'level-2', tileWidth: 16, tileHeight: 16 })
         const tileSet1 = this.levelMap.addTilesetImage('Terrain', spriteObj.BASE_TERRAIN.key)
         const tileSet3 = this.levelMap.addTilesetImage('Spike', spriteObj.SPIKE.key)
         const tileSetApple = this.levelMap.addTilesetImage('Apple', spriteObj.ITEM_APPLE.key)

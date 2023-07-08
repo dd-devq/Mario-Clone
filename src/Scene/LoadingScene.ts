@@ -92,6 +92,8 @@ export class LoadingScene extends Phaser.Scene {
         this.load.image(spriteObj.BASE_BACKGROUND_PURPLE.key, spriteObj.BASE_BACKGROUND_PURPLE.path)
         this.load.image(spriteObj.BASE_BACKGROUND_YELLOW.key, spriteObj.BASE_BACKGROUND_YELLOW.path)
         this.load.image(spriteObj.BASE_BACKGROUND_PINK.key, spriteObj.BASE_BACKGROUND_PINK.path)
+        this.load.image(spriteObj.START.key, spriteObj.START.path)
+        this.load.image(spriteObj.END.key, spriteObj.END.path)
 
         this.load.audio(audioObj.COIN.key, audioObj.COIN.path)
         this.load.audio(audioObj.DEATH.key, audioObj.DEATH.path)

@@ -178,4 +178,14 @@ export const spriteObj = {
         key: 'spike',
         path: 'assets\\sprites\\Traps\\Spikes\\Idle.png',
     },
+
+    START: {
+        key: 'start',
+        path: 'assets\\sprites\\Items\\Checkpoints\\Start\\Start.png',
+    },
+
+    END: {
+        key: 'end',
+        path: 'assets\\sprites\\Items\\Checkpoints\\Checkpoint\\Checkpoint-Idle.png',
+    },
 }
