@@ -35,4 +35,8 @@ export class InputManager {
     public isRightKeyDown(): boolean {
         return this.cursor.right.isDown
     }
+
+    public isEscKeyDown(): boolean {
+        return this.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC)?.isDown
+    }
 }

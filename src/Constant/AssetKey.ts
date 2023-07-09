@@ -209,6 +209,11 @@ export const spriteObj = {
         path: 'assets\\sprites\\Menu\\Buttons\\Next.png',
     },
 
+    PREVIOUS: {
+        key: 'previous',
+        path: 'assets\\sprites\\Menu\\Buttons\\Previous.png',
+    },
+
     PLAY: {
         key: 'play',
         path: 'assets\\sprites\\Menu\\Buttons\\Play.png',

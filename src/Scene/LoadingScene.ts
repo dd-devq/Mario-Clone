@@ -113,8 +113,8 @@ export class LoadingScene extends Phaser.Scene {
         this.load.image(spriteObj.LEVEL3.key, spriteObj.LEVEL3.path)
         this.load.image(spriteObj.NEXT.key, spriteObj.NEXT.path)
         this.load.image(spriteObj.PLAY.key, spriteObj.PLAY.path)
-        this.load.image(spriteObj.END.key, spriteObj.END.path)
-        this.load.image(spriteObj.CLOSE.key, spriteObj.CLOSE.path)
+        this.load.image(spriteObj.PREVIOUS.key, spriteObj.PREVIOUS.path)
+        this.load.image(spriteObj.RESTART.key, spriteObj.RESTART.path)
         this.load.image(spriteObj.BACK.key, spriteObj.BACK.path)
     }
 

@@ -7,6 +7,7 @@ import { InputManager } from '../../GameObject/Manager/InputManager'
 import { Player } from '../../GameObject/Player/Player'
 import AnimatedTiles from 'phaser-animated-tiles/dist/AnimatedTiles'
 import { fontObj } from '../../Constant/AssetKey'
+import { sceneKey } from '../../Constant/SceneKey'
 
 export class Level2Scene extends Phaser.Scene {
     private backgroundScrollSpeed = 0.01
@@ -301,5 +302,10 @@ export class Level2Scene extends Phaser.Scene {
     update(time: number, delta: number): void {
         this.background.tilePositionY -= this.backgroundScrollSpeed * delta
         GameManager.Instance.update()
+
+        if (InputManager.Instance.isEscKeyDown()) {
+            this.scene.pause()
+            this.scene.launch(sceneKey.PAUSE, { currentLevel: this.scene.key })
+        }
     }
 }

@@ -1,6 +1,7 @@
 import { playerAnimationKey } from '../../Constant/AnimationKey'
 import { audioObj, fontObj, spriteObj, virtualGuySpriteObj } from '../../Constant/AssetKey'
 import { depthLayer } from '../../Constant/DepthLayer'
+import { sceneKey } from '../../Constant/SceneKey'
 import { AudioManager } from '../../GameObject/Manager/AudioManager'
 import { GameManager } from '../../GameObject/Manager/GameManager'
 import { InputManager } from '../../GameObject/Manager/InputManager'
@@ -298,5 +299,10 @@ export class Level1Scene extends Phaser.Scene {
     update(time: number, delta: number): void {
         this.background.tilePositionY -= this.backgroundScrollSpeed * delta
         GameManager.Instance.update()
+
+        if (InputManager.Instance.isEscKeyDown()) {
+            this.scene.pause()
+            this.scene.launch(sceneKey.PAUSE, { currentLevel: this.scene.key })
+        }
     }
 }
