@@ -79,7 +79,6 @@ export class GameManager {
     }
 
     public update(): void {
-        console.log(this.retrieveHighScore())
         if (this.player.isDead) {
             this.scene.cameras.main.setAlpha(0)
             this.scene.scene.restart()

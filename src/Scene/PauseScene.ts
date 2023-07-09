@@ -3,7 +3,7 @@ import { sceneKey } from '../Constant/SceneKey'
 import { Button } from '../GameObject/UI/Button'
 import { depthLayer } from '../Constant/DepthLayer'
 
-export class MenuScene extends Phaser.Scene {
+export class PauseScene extends Phaser.Scene {
     private backgroundScrollSpeed = 0.01
     private background: Phaser.GameObjects.TileSprite
 

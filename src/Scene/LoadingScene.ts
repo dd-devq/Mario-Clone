@@ -39,7 +39,7 @@ export class LoadingScene extends Phaser.Scene {
         this.load.on('complete', () => {
             progressBar.destroy()
             progressBox.destroy()
-            this.scene.start(sceneKey.LEVEL1)
+            this.scene.start(sceneKey.MENU)
         })
 
         this.loadImage()
@@ -107,6 +107,15 @@ export class LoadingScene extends Phaser.Scene {
         this.load.image(spriteObj.BASE_BACKGROUND_PINK.key, spriteObj.BASE_BACKGROUND_PINK.path)
         this.load.image(spriteObj.START.key, spriteObj.START.path)
         this.load.image(spriteObj.END.key, spriteObj.END.path)
+        this.load.image(spriteObj.CLOSE.key, spriteObj.CLOSE.path)
+        this.load.image(spriteObj.LEVEL1.key, spriteObj.LEVEL1.path)
+        this.load.image(spriteObj.LEVEL2.key, spriteObj.LEVEL2.path)
+        this.load.image(spriteObj.LEVEL3.key, spriteObj.LEVEL3.path)
+        this.load.image(spriteObj.NEXT.key, spriteObj.NEXT.path)
+        this.load.image(spriteObj.PLAY.key, spriteObj.PLAY.path)
+        this.load.image(spriteObj.END.key, spriteObj.END.path)
+        this.load.image(spriteObj.CLOSE.key, spriteObj.CLOSE.path)
+        this.load.image(spriteObj.BACK.key, spriteObj.BACK.path)
     }
 
     loadAudio(): void {

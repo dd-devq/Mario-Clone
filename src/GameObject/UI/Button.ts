@@ -1,48 +1,31 @@
 export class Button extends Phaser.GameObjects.Container {
-    private background: Phaser.GameObjects.Rectangle
-
-    private text: Phaser.GameObjects.Text
-    public sprite: Phaser.GameObjects.NineSlice
-
+    public sprite: Phaser.GameObjects.Image
     private isPointerDown: boolean
     private isPointerOver: boolean
-
     private callback: () => void
 
     constructor(
         scene: Phaser.Scene,
         x: number,
         y: number,
-        width: number,
-        height: number,
-        content: string,
-        isText: boolean,
+        spriteKey: string,
         callback: () => void
     ) {
         super(scene, x, y)
+
         this.callback = callback
         this.isPointerDown = false
         this.isPointerOver = false
+        this.sprite = this.scene.add.image(0, 0, spriteKey)
+        this.add(this.sprite)
 
-        if (isText) {
-            this.text = this.scene.add.text(x, y, content).setOrigin(0.5)
-        } else {
-            this.sprite = this.scene.add
-                .nineslice(x, y, content, undefined, width, height, 10, 10)
-                .setDisplaySize(width, height)
-            // .setDepth(depthLayer.UI)
-        }
-
-        // Create the background rectangle
-        this.background = this.scene.add
-            .rectangle(x, y, width, height, 0x000000, 0)
-            .setDisplaySize(width, height)
-            .setSize(width, height)
-            .setOrigin(0.5)
-
-        // Register pointer events
         this.setInteractive(
-            new Phaser.Geom.Rectangle(-width / 2, -height / 2, width, height),
+            new Phaser.Geom.Rectangle(
+                -this.sprite.width / 2,
+                -this.sprite.height / 2,
+                this.sprite.width,
+                this.sprite.height
+            ),
             Phaser.Geom.Rectangle.Contains
         )
 

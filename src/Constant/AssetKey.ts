@@ -193,6 +193,46 @@ export const spriteObj = {
         key: 'splash',
         path: 'assets\\sprites\\Space Background.png',
     },
+
+    BACK: {
+        key: 'back',
+        path: 'assets\\sprites\\Menu\\Buttons\\Back.png',
+    },
+
+    CLOSE: {
+        key: 'close',
+        path: 'assets\\sprites\\Menu\\Buttons\\Close.png',
+    },
+
+    NEXT: {
+        key: 'next',
+        path: 'assets\\sprites\\Menu\\Buttons\\Next.png',
+    },
+
+    PLAY: {
+        key: 'play',
+        path: 'assets\\sprites\\Menu\\Buttons\\Play.png',
+    },
+
+    RESTART: {
+        key: 'restart',
+        path: 'assets\\sprites\\Menu\\Buttons\\Restart.png',
+    },
+
+    LEVEL1: {
+        key: 'level-1',
+        path: 'assets\\sprites\\Menu\\Levels\\01.png',
+    },
+
+    LEVEL2: {
+        key: 'level-2',
+        path: 'assets\\sprites\\Menu\\Levels\\02.png',
+    },
+
+    LEVEL3: {
+        key: 'level-3',
+        path: 'assets\\sprites\\Menu\\Levels\\03.png',
+    },
 }
 
 export const fontObj = {
