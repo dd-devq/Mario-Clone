@@ -19,15 +19,15 @@
                  "y":192
                 }, 
                 {
-                 "height":32,
+                 "height":15.9303675048358,
                  "id":6,
                  "name":"WinZone",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":32,
+                 "width":32.1754744973653,
                  "x":1552,
-                 "y":80
+                 "y":96
                 }],
          "opacity":1,
          "type":"objectgroup",
