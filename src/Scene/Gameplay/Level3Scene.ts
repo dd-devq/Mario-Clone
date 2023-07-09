@@ -6,7 +6,7 @@ import { GameManager } from '../../GameObject/Manager/GameManager'
 import { InputManager } from '../../GameObject/Manager/InputManager'
 import { Player } from '../../GameObject/Player/Player'
 import AnimatedTiles from 'phaser-animated-tiles/dist/AnimatedTiles'
-
+import { fontObj } from '../../Constant/AssetKey'
 export class Level3Scene extends Phaser.Scene {
     private backgroundScrollSpeed = 0.01
     private background: Phaser.GameObjects.TileSprite
@@ -30,13 +30,40 @@ export class Level3Scene extends Phaser.Scene {
         this.createPlayer()
         this.setupLayers()
         this.setupCamera()
+        this.setupUI()
 
         AudioManager.Instance.stopAllSoundFX()
         AudioManager.Instance.playSoundFX(audioObj.INTRO.key)
         AudioManager.Instance.bgm = this.sound.add(audioObj.THEME.key)
         AudioManager.Instance.playBGM(0.5, true)
     }
+    private setupUI(): void {
+        this.add.bitmapText(
+            GameManager.Instance.winZone.x,
+            GameManager.Instance.winZone.y,
+            fontObj.MARIO_FONT.key,
+            'END',
+            8
+        )
 
+        this.add
+            .bitmapText(
+                GameManager.Instance.startZone.x,
+                GameManager.Instance.startZone.y - 80,
+                fontObj.MARIO_FONT.key,
+                'HIGHSCORE - ' + GameManager.Instance.retrieveHighScore().toString(),
+                16
+            )
+            .setDepth(depthLayer.UI)
+
+        GameManager.Instance.scoreUI = this.add.bitmapText(
+            GameManager.Instance.player.x - 25,
+            GameManager.Instance.player.y,
+            fontObj.MARIO_FONT.key,
+            'HERE',
+            8
+        )
+    }
     private setupCheckPoint(): void {
         const checkPoints = this.levelMap.getObjectLayer('CheckPoint')?.objects
         if (checkPoints !== undefined) {
@@ -181,6 +208,7 @@ export class Level3Scene extends Phaser.Scene {
                                     if (tile.visible) {
                                         tile.setVisible(false)
                                         AudioManager.Instance.playSoundFX(audioObj.COIN.key, 0.25)
+                                        GameManager.Instance.addScore(10)
                                     }
                                 }
                             })

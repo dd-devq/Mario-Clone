@@ -14,5 +14,4 @@ window.addEventListener('load', () => {
     game.scene.add(sceneKey.LEVEL1, Level1Scene)
     game.scene.add(sceneKey.LEVEL2, Level2Scene)
     game.scene.add(sceneKey.LEVEL3, Level3Scene)
-    game.scene.add(sceneKey.GAME_OVER, LoadingScene)
 })

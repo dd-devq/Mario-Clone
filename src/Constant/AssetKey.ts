@@ -188,4 +188,17 @@ export const spriteObj = {
         key: 'end',
         path: 'assets\\sprites\\Items\\Checkpoints\\Checkpoint\\Checkpoint-Idle.png',
     },
+
+    SPLASH: {
+        key: 'splash',
+        path: 'assets\\sprites\\Space Background.png',
+    },
+}
+
+export const fontObj = {
+    MARIO_FONT: {
+        key: 'mario-font',
+        pathImage: 'assets\\font\\superMarioLand.png',
+        pathFNT: 'assets\\font\\superMarioLand.fnt',
+    },
 }

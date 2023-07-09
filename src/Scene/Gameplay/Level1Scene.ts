@@ -1,5 +1,5 @@
 import { playerAnimationKey } from '../../Constant/AnimationKey'
-import { audioObj, spriteObj, virtualGuySpriteObj } from '../../Constant/AssetKey'
+import { audioObj, fontObj, spriteObj, virtualGuySpriteObj } from '../../Constant/AssetKey'
 import { depthLayer } from '../../Constant/DepthLayer'
 import { AudioManager } from '../../GameObject/Manager/AudioManager'
 import { GameManager } from '../../GameObject/Manager/GameManager'
@@ -39,7 +39,31 @@ export class Level1Scene extends Phaser.Scene {
     }
 
     private setupUI(): void {
-        //
+        this.add.bitmapText(
+            GameManager.Instance.winZone.x,
+            GameManager.Instance.winZone.y,
+            fontObj.MARIO_FONT.key,
+            'END',
+            8
+        )
+
+        this.add
+            .bitmapText(
+                GameManager.Instance.startZone.x,
+                GameManager.Instance.startZone.y - 80,
+                fontObj.MARIO_FONT.key,
+                'HIGHSCORE - ' + GameManager.Instance.retrieveHighScore().toString(),
+                16
+            )
+            .setDepth(depthLayer.UI)
+
+        GameManager.Instance.scoreUI = this.add.bitmapText(
+            GameManager.Instance.player.x - 25,
+            GameManager.Instance.player.y,
+            fontObj.MARIO_FONT.key,
+            'HERE',
+            8
+        )
     }
 
     private setupCheckPoint(): void {
@@ -186,6 +210,7 @@ export class Level1Scene extends Phaser.Scene {
                                     if (tile.visible) {
                                         tile.setVisible(false)
                                         AudioManager.Instance.playSoundFX(audioObj.COIN.key, 0.25)
+                                        GameManager.Instance.addScore(10)
                                     }
                                 }
                             })

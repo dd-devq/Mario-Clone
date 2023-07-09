@@ -1,11 +1,16 @@
-import { audioObj, spriteObj, virtualGuySpriteObj } from '../Constant/AssetKey'
+import { audioObj, fontObj, spriteObj, virtualGuySpriteObj } from '../Constant/AssetKey'
 import { depthLayer } from '../Constant/DepthLayer'
 import { sceneKey } from '../Constant/SceneKey'
 
 export class LoadingScene extends Phaser.Scene {
     preload() {
-        const barWidth = 500
-        const barHeight = 50
+        this.load.image(spriteObj.SPLASH.key, spriteObj.SPLASH.path)
+    }
+
+    create() {
+        this.add.image(0, 0, spriteObj.SPLASH.key).setOrigin(0)
+        const barWidth = 750
+        const barHeight = 25
 
         const progressBar = this.add.graphics()
         const progressBox = this.add.graphics()
@@ -37,6 +42,14 @@ export class LoadingScene extends Phaser.Scene {
             this.scene.start(sceneKey.LEVEL1)
         })
 
+        this.loadImage()
+        this.loadAudio()
+        this.loadTextFont()
+
+        this.load.start()
+    }
+
+    loadImage(): void {
         this.load.spritesheet(spriteObj.DISAPPEARING.key, spriteObj.DISAPPEARING.path, {
             frameWidth: 96,
             frameHeight: 96,
@@ -94,7 +107,9 @@ export class LoadingScene extends Phaser.Scene {
         this.load.image(spriteObj.BASE_BACKGROUND_PINK.key, spriteObj.BASE_BACKGROUND_PINK.path)
         this.load.image(spriteObj.START.key, spriteObj.START.path)
         this.load.image(spriteObj.END.key, spriteObj.END.path)
+    }
 
+    loadAudio(): void {
         this.load.audio(audioObj.COIN.key, audioObj.COIN.path)
         this.load.audio(audioObj.DEATH.key, audioObj.DEATH.path)
         this.load.audio(audioObj.GAME_OVER.key, audioObj.GAME_OVER.path)
@@ -104,5 +119,13 @@ export class LoadingScene extends Phaser.Scene {
         this.load.audio(audioObj.POWER_UP.key, audioObj.POWER_UP.path)
         this.load.audio(audioObj.THEME.key, audioObj.THEME.path)
         this.load.audio(audioObj.WIN.key, audioObj.WIN.path)
+    }
+
+    loadTextFont(): void {
+        this.load.bitmapFont(
+            fontObj.MARIO_FONT.key,
+            fontObj.MARIO_FONT.pathImage,
+            fontObj.MARIO_FONT.pathFNT
+        )
     }
 }
