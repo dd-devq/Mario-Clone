@@ -387,7 +387,7 @@
  </tileset>
  <objectgroup id="8" name="CheckPoint">
   <object id="3" name="StartZone" x="32" y="192" width="32" height="32"/>
-  <object id="6" name="WinZone" x="1552" y="80" width="32" height="32"/>
+  <object id="6" name="WinZone" x="1552" y="96" width="32.1755" height="15.9304"/>
  </objectgroup>
  <objectgroup id="10" name="Enemy Position"/>
  <layer id="5" name="Collectibles" width="100" height="30">

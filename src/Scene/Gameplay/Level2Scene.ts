@@ -136,7 +136,7 @@ export class Level2Scene extends Phaser.Scene {
             ;(this.sys as any).animatedTiles.init(this.levelMap)
 
             this.background = this.add
-                .tileSprite(0, 0, 10000, 10000, spriteObj.BASE_BACKGROUND_BROWN.key)
+                .tileSprite(0, 0, 10000, 10000, spriteObj.BASE_BACKGROUND_BLUE.key)
                 .setDepth(-1)
         }
     }
@@ -149,7 +149,9 @@ export class Level2Scene extends Phaser.Scene {
         if (this.platform !== undefined) {
             this.physics.world.bounds.width = this.platform.width
 
-            this.platform.setCollision([94, 95, 96, 97, 98, 116, 117, 118, 119, 120, 138, 139, 140])
+            this.platform.setCollision([
+                182, 183, 184, 185, 186, 204, 205, 206, 207, 208, 226, 227, 228,
+            ])
             this.physics.add.collider(
                 GameManager.Instance.player,
                 this.platform,

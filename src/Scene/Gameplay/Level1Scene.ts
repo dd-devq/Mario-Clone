@@ -30,11 +30,16 @@ export class Level1Scene extends Phaser.Scene {
         this.createPlayer()
         this.setupLayers()
         this.setupCamera()
+        this.setupUI()
 
         AudioManager.Instance.stopAllSoundFX()
         AudioManager.Instance.playSoundFX(audioObj.INTRO.key)
         AudioManager.Instance.bgm = this.sound.add(audioObj.THEME.key)
         AudioManager.Instance.playBGM(0.5, true)
+    }
+
+    private setupUI(): void {
+        //
     }
 
     private setupCheckPoint(): void {
@@ -136,7 +141,7 @@ export class Level1Scene extends Phaser.Scene {
             ;(this.sys as any).animatedTiles.init(this.levelMap)
 
             this.background = this.add
-                .tileSprite(0, 0, 10000, 10000, spriteObj.BASE_BACKGROUND_BROWN.key)
+                .tileSprite(0, 0, 10000, 10000, spriteObj.BASE_BACKGROUND_PURPLE.key)
                 .setDepth(-1)
         }
     }
