@@ -4,6 +4,7 @@ import { InputManager } from '../Manager/InputManager'
 import { State } from './State'
 import { AudioManager } from '../Manager/AudioManager'
 import { audioObj } from '../../Constant/AssetKey'
+const SLIDING_SPEED = 48
 
 export class JumpState extends State<Player> {
     private jumpForce = -250
@@ -94,6 +95,12 @@ export class WallJumpState extends State<Player> {
         this.parent.scene.physics.world.gravity.y = this.worldGravity * 0.05
         this.parent.jumpCount = 0
         this.parent.play(playerAnimationKey.WALL_JUMP)
+
+        if (this.parent.body instanceof Phaser.Physics.Arcade.Body) {
+            this.parent.body.allowGravity = false
+        }
+
+        this.parent.setVelocityY(SLIDING_SPEED)
     }
 
     public Update(): void {
@@ -123,5 +130,9 @@ export class WallJumpState extends State<Player> {
     public Exit(): void {
         this.parent.scene.physics.world.gravity.y = this.worldGravity
         this.parent.stop()
+
+        if (this.parent.body instanceof Phaser.Physics.Arcade.Body) {
+            this.parent.body.allowGravity = true
+        }
     }
 }

@@ -8,6 +8,8 @@ import { State } from './State'
 import { Stack } from '../../Container/Stack'
 import { spriteObj } from '../../Constant/AssetKey'
 
+const TIME_TO_CHECK_TOUCH_WALL = 3
+
 export class Player extends Phaser.Physics.Arcade.Sprite {
     /* Player Asset */
     private playerSpriteObj: PlayerSpriteObj
@@ -17,6 +19,8 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
 
     private readonly BODY_SCALE_FACTOR = { x: 0.5, y: 0.8 }
     private readonly BODY_OFFSET = { x: 7.5, y: 5 }
+
+    private timeToCheckTouchWall = 0
 
     /* Player's Flag */
     public isGrounded = true
@@ -195,7 +199,6 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
             this.applyForceX(0.00000001)
         }
     }
-
     private updateFlags(): void {
         if (this.body?.blocked.down) {
             this.isGrounded = true
@@ -203,14 +206,19 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
             this.isGrounded = false
         }
 
-        if (this.body?.blocked.left) {
-            this.isTouchingWall = true
-            this.isTouchingWallLeft = true
-        } else if (this.body?.blocked.right) {
-            this.isTouchingWall = true
-            this.isTouchingWallLeft = false
-        } else {
-            this.isTouchingWall = false
+        this.timeToCheckTouchWall += 1
+        if (this.timeToCheckTouchWall >= TIME_TO_CHECK_TOUCH_WALL) {
+            this.timeToCheckTouchWall = 0
+
+            if (this.body?.blocked.left) {
+                this.isTouchingWall = true
+                this.isTouchingWallLeft = true
+            } else if (this.body?.blocked.right) {
+                this.isTouchingWall = true
+                this.isTouchingWallLeft = false
+            } else {
+                this.isTouchingWall = false
+            }
         }
     }
 }
